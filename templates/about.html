@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - Loan Predictor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #004080, #007bff);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      animation: bgShift 15s infinite alternate;
+    }
+
+    @keyframes bgShift {
+      0% {
+        background: linear-gradient(135deg, #004080, #007bff);
+      }
+      100% {
+        background: linear-gradient(135deg, #004080, #007bff);
+      }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #ffffff;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .back-link a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>About Our Loan Eligibility Predictor</h2>
+    <p>
+      Our Loan Eligibility Predictor helps individuals assess their chances of getting a loan based on their personal and financial details. By analyzing a variety of factors such as income, credit score, and bank details, our system provides users with an instant eligibility score. This ensures transparency and empowers you to make informed decisions before applying for a loan.
+    </p>
+    <p>
+      The system uses advanced algorithms and up-to-date financial data to offer accurate predictions. Whether you are applying for a personal loan, home loan, or any other type, we make sure to evaluate your application carefully and thoroughly.
+    </p>
+
+    <div class="back-link">
+      <a href="{% url 'bank' %}">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

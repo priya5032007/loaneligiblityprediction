@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bank Details - Credit Score</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #001f3f, #0074D9);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+      color: #ffffff;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: none;
+      border-radius: 10px;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 16px;
+    }
+
+    input::placeholder {
+      color: #e0e0e0;
+    }
+
+    .btn {
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0097a7;
+    }
+
+    #scoreBox {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(0, 188, 212, 0.2);
+      border-radius: 15px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .eligible {
+      color: #00e676;
+      font-weight: bold;
+    }
+
+    .not-eligible {
+      color: #ff5252;
+      font-weight: bold;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .action-buttons a {
+      flex: 1;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-card">
+    <h2>Bank Details & Credit Score</h2>
+    <form method="POST" action="{% url 'bank' %}">
+      {% csrf_token %}
+
+      <label>Bank Name</label>
+      <input type="text" name="bank_name" required>
+
+      <label>IFSC Code</label>
+      <input type="text" name="ifsc" required>
+
+      <label>Account Number</label>
+      <input type="text" name="account_number" required>
+
+      <label>Do you have a credit card?</label>
+      <select name="credit_card" required>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Number of Existing Loans</label>
+      <input type="number" name="existing_loans" required min="0">
+
+      <label>Loan Repayment History</label>
+      <select name="repayment_history" required>
+        <option value="good">Good</option>
+        <option value="average">Average</option>
+        <option value="poor">Poor</option>
+      </select>
+
+      <button type="submit" class="btn">Calculate Credit Score</button>
+    </form>
+
+    <div class="action-buttons">
+      <a href="{% url 'about' %}"><button class="btn">About</button></a>
+      <a href="{% url 'login' %}"><button class="btn">Logout</button></a>
+    </div>
+
+    {% if score %}
+      <div id="scoreBox">
+        Your Credit Score is <strong>{{ score }}</strong><br><br>
+        {% if score >= 700 %}
+          <span class="eligible">✅ Congratulations! You are eligible for a loan.</span>
+        {% else %}
+          <span class="not-eligible">❌ Sorry, you are not eligible for a loan.</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>

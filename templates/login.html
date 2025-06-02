@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Loan Predictor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #004080, #007bff);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 350px;
+    }
+
+    .glass-box h2 {
+      margin-bottom: 10px;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    .glass-box p {
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    button {
+      background: #00c6ff;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background: #0097cc;
+    }
+
+    a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .text-small {
+      font-size: 13px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    /* Flash message styling */
+    .flash {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .flash.success {
+      background-color: rgba(0, 255, 0, 0.2);
+      color: #00ff99;
+    }
+
+    .flash.danger {
+      background-color: rgba(255, 0, 0, 0.2);
+      color: #ff4d4d;
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-box">
+    <h2>Welcome Back</h2>
+    <p>Login to continue</p>
+
+    <!-- Login Form -->
+    <form action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="text-small">
+      Don't have an account? <a href="{% url 'register' %}">Register</a>
+    </div>
+  </div>
+</body>
+</html>

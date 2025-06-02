@@ -1,0 +1,7 @@
+<h2>Your Credit Score: {{ credit_score }}</h2>
+{% if eligible %}
+  <h3>✅ You are eligible for the loan.</h3>
+{% else %}
+  <h3>❌ Not eligible for the loan.</h3>
+{% endif %}
+<a href="/about/">About</a>
