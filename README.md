@@ -1,4 +1,4 @@
-his project is a web-based application developed using Python and the Django framework. It helps determine whether a user is eligible for a loan based on their personal and financial details.
+This project is a web-based application developed using Python and the Django framework. It helps determine whether a user is eligible for a loan based on their personal and financial details.
 
 The system collects user data such as income, employment status, loan amount, and other details, then processes this information to predict loan approval using predefined logic or machine learning techniques.
 
